@@ -30,6 +30,6 @@ if __name__ == "__main__":
     if app.config['ENVIRONMENT'] == 'PRODUCTION':
         serve(app, host='0.0.0.0', port=PORT)
     elif app.config['ENVIRONMENT'] == 'DEVELOPMENT':
-        app.run(port=5050)
+        app.run(port=5050, debug=True)
     else:
         assert(False)
