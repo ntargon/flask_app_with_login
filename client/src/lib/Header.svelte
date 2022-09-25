@@ -1,19 +1,27 @@
 <script>
-    import { location } from "svelte-spa-router";
+    import { location, push } from "svelte-spa-router";
+    import axios from "axios";
+
+    const logout = () => {
+        axios.get("/api/logout")
+            .then(res => {
+                push("/login");
+            });
+    };
 </script>
 
 <nav class="text-xl bg-gray-900 font-bold flex">
-<div class="w-full text-gray-400 ">
-    <a href="/#/" class="p-4 hover:text-white" class:current_page={$location === "/"}>Page 1</a>
-    <a href="/#/page2" class="p-4 hover:text-white" class:current_page={$location === "/page2"}>Page 2</a>
+<div class="w-full text-gray-400 flex">
+    <div class="p-2 hover:text-white cursor-pointer" class:current_page={$location === "/"} on:click={() => push("/")}>Page 1</div>
+    <div class="p-2 hover:text-white cursor-pointer" class:current_page={$location === "/page2"} on:click={() => push("/page2")}>Page 2</div>
 </div>
 <div class="">
-    <a href="/api/logout" class="p-4 text-white">logout</a>
+    <div class="p-2 text-white cursor-pointer" on:click={logout}>logout</div>
 </div>
 </nav>
 
 <style>
-a.current_page {
+div.current_page {
     @apply text-white;
 }
 </style>

@@ -4,6 +4,17 @@
 	import { replace } from "svelte-spa-router";
 
 	let login_checked = false;
+	let password;
+
+	const login = () => {
+		axios.post(
+			"/api/login",
+			{password}
+		).then(res => {
+			replace("/")
+		}).catch(err => {
+		})
+	};
 
 	onMount(() => {
 		axios.get("/api/logged_in")
@@ -20,8 +31,8 @@
 
 <h1>Login</h1>
 
-<form method="post" action="/api/login">
-	<input name="password" type="password">
+<form on:submit|preventDefault={login}>
+	<input bind:value={password} type="password">
 	<button type="submit">
 		Login
 	</button>

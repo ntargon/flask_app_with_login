@@ -47,9 +47,9 @@
             <thead>
                 <tr class="bg-blue-200">
                     <th>count</th>
-                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={sort("id")}>id</th>
-                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={sort("name")}>name</th>
-                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={sort("date")}>date</th>
+                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={() => sort("id")}>id</th>
+                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={() => sort("name")}>name</th>
+                    <th class="hover:bg-blue-300 hover:cursor-pointer" on:click={() => sort("date")}>date</th>
                 </tr>
             </thead>
             <tbody>

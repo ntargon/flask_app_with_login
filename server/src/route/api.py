@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, redirect, abort, send_from_directory, request, current_app
+from flask import Blueprint, jsonify, session, redirect, abort, send_from_directory, request, current_app, Response
 from functools import wraps
 import random
 
@@ -26,22 +26,22 @@ def api():
 # TODO: 分割する
 @bp.route("/login", methods=['POST'])
 def login():
-    password = request.form.get('password')
-    print(password)
+    password = request.get_json().get("password")
     if  password == PASSWORD:
         session["id"] = 1
-        return redirect('/')
+        return Response(200)
     else:
-        return redirect('/#/login')
+        return abort(401)
 
 @bp.route("/logout")
 def logout():
-    session.pop("id")
-    return redirect('/#/login')
+    if "id" in session:
+        session.pop("id")
+    return Response(200)
 
 @bp.route("/logged_in")
 def logged_in():
     if "id" in session:
-        return "ok", 200
+        return Response(200)
     else:
-        return "ng", 401
+        return abort(401)
