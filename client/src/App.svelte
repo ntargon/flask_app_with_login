@@ -1,5 +1,6 @@
 <script lang='typescript'>
   import Router from 'svelte-spa-router'
+  import Header from './lib/Header.svelte';
   import { routes } from './router'
   import { push } from 'svelte-spa-router';
   import { onMount } from "svelte";
@@ -29,12 +30,13 @@
   });
 </script>
 
-{#if logged_in_checked}
+
 <main>
-  <nav><a href="/api/logout">logout</a></nav>
+  <Header />
+  {#if logged_in_checked}
   <Router {routes} />
+  {/if}
 </main>
-{/if}
 
 <style>
 </style>
