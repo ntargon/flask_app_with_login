@@ -6,7 +6,7 @@ import Login from '../pages/Login.svelte'
 
 const loggedIn = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
-    axios.get('/api/logged_in')
+    axios.get('/auth/logged_in')
       .then(res => {
         resolve(true);
       })

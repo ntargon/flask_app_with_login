@@ -8,7 +8,7 @@
 
 	const login = () => {
 		axios.post(
-			"/api/login",
+			"/auth/login",
 			{password}
 		).then(res => {
 			replace("/")
@@ -17,7 +17,7 @@
 	};
 
 	onMount(() => {
-		axios.get("/api/logged_in")
+		axios.get("/auth/logged_in")
 			.then(res => {
 				replace("/");
 			})

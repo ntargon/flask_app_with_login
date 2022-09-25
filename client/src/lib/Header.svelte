@@ -3,7 +3,7 @@
     import axios from "axios";
 
     const logout = () => {
-        axios.get("/api/logout")
+        axios.get("/auth/logout")
             .then(res => {
                 push("/login");
             });
