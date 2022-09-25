@@ -1,5 +1,4 @@
-from flask import Blueprint, jsonify, session, redirect, abort, send_from_directory, request, current_app
-from functools import wraps
+from flask import Blueprint, redirect, send_from_directory, current_app
 
 bp = Blueprint('root', __name__, url_prefix='/')
 

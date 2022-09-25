@@ -1,6 +1,4 @@
-from flask import Blueprint, jsonify, session, redirect, abort, send_from_directory, request, current_app, Response
-from functools import wraps
-import random
+from flask import Blueprint, session, abort, request, Response
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
