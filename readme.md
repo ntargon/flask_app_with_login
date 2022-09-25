@@ -14,13 +14,18 @@ cd client/; yarn vite; # terminal 1
 ```
 at terminal 2
 ```
-export FLASK_CONFIG_FILE_PATH=development.cfg; python server/server.py;
+cd server/src/;
+export FLASK_CONFIG_FILE_PATH=../development.cfg; python app.py;
 ```
 
 **本番時**
 
+at terminal 1
 ```
 cd client/; yarn build;
-cd ../;
-export FLASK_CONFIG_FILE_PATH=production.cfg; python server/server.py;
+```
+at terminal 2
+```
+cd server/src/;
+export FLASK_CONFIG_FILE_PATH=../production.cfg; python app.py;
 ```

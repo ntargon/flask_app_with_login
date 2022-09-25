@@ -1,8 +1,9 @@
 from crypt import methods
 from operator import methodcaller
-from flask import Flask, send_from_directory, redirect, session, request
+from flask import Flask, send_from_directory, redirect, session, request, abort
 import random
 from waitress import serve
+from functools import wraps
 
 app = Flask(__name__)
 app.config.from_envvar('FLASK_CONFIG_FILE_PATH')
@@ -26,9 +27,20 @@ def home(path):
     else:
         assert(False)
 
+def login_required(api_method):
+    @wraps(api_method)
+    def check_api_key(*args, **kwargs):
+        if 'id' in session:
+            return api_method(*args, **kwargs)
+        else:
+            abort(401)
+
+    return check_api_key
+
 # api
 @app.route("/api")
-def hello():
+@login_required
+def api():
     return str(random.randint(0, 100))
 
 @app.route("/login", methods=['POST'])
