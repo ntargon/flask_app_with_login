@@ -9,7 +9,7 @@
 
   const loggedIn = () => {
     return new Promise((resolve, reject) => {
-      axios.get('/logged_in')
+      axios.get('/api/logged_in')
         .then(res => {
           resolve(true);
         })
@@ -31,7 +31,7 @@
 
 {#if logged_in_checked}
 <main>
-  <nav><a href="/logout">logout</a></nav>
+  <nav><a href="/api/logout">logout</a></nav>
   <Router {routes} />
 </main>
 {/if}
