@@ -44,4 +44,4 @@ def logged_in():
     if "id" in session:
         return "ok", 200
     else:
-        return "ng", 500
+        return "ng", 401
