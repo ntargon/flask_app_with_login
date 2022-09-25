@@ -10,7 +10,7 @@
     };
 </script>
 
-<nav class="text-xl bg-gray-900 font-bold flex">
+<nav class="text-xl bg-gray-900 font-bold flex sticky top-0 z-50">
 <div class="w-full text-gray-400 flex">
     <div class="p-2 hover:text-white cursor-pointer" class:current_page={$location === "/"} on:click={() => push("/")}>Page 1</div>
     <div class="p-2 hover:text-white cursor-pointer" class:current_page={$location === "/page2"} on:click={() => push("/page2")}>Page 2</div>
